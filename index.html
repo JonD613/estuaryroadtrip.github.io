@@ -37,9 +37,26 @@
 
     .hero-buttons {
       display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .plan-visit-button {
+      width: 325px;
+      height: 30px;
+      font-size: x-large;
+    }
+
+    .top-button {
+      display: flex;
+      justify-content: center;
+    }
+
+    .bottom-buttons {
+      display: flex;
       justify-content: center;
       gap: 1rem;
-      margin-bottom: 2rem;
     }
 
     .hero-link-button {
@@ -183,11 +200,76 @@
       margin-bottom: 1rem;
     }
 
+    /* Adjust close button for mobile */
+    @media (max-width: 768px) {
+      .lightbox .close {
+        top: 10px;
+        right: 10px;
+        font-size: 1.5rem;
+      }
+    }
+
+    /* Mobile-friendly photo layout */
     .photo-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
     }
+
+    /* Lightbox styles */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 1000;
+      padding: 1rem;
+      overflow: hidden;
+    }
+
+    .lightbox-img {
+      max-width: 90%;
+      max-height: 80vh;
+      margin: 0 auto;
+      display: block;
+      object-fit: contain;
+    }
+
+
+    .lightbox .close {
+      position: absolute;
+      top: 1rem;
+      right: 2rem;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      font-size: 2.5rem;
+      color: white;
+      cursor: pointer;
+      padding: 1rem;
+      user-select: none;
+    }
+
+    .arrow.left {
+      left: 2rem;
+    }
+
+    .arrow.right {
+      right: 2rem;
+    }
+
+    .hidden {
+      display: none;
+    }
+
 
     .photo-item {
       border-radius: 12px;
@@ -199,6 +281,18 @@
       width: 100%;
       height: 250px;
       object-fit: cover;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .photo-img {
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        cursor: zoom-in;
+      }
+
+      .photo-img:hover {
+        transform: scale(1.03);
+        opacity: 0.85;
+      }
     }
 
     .photo-meta {
@@ -277,17 +371,27 @@
 
     .youtube-button:hover {
       background-color: var(--feminine-hover);
+
+    }
+    .icon-img {
+      width: 73px;
+      object-fit: contain;
+      vertical-align: middle;
+      margin-right: -3px;
     }
   </style>
 </head>
 <body>
-<!--   this is a comment
-   -->
   <header class="hero">
-    <h1>The ReMember EmBody Roadtrip</h1>
+    <h1>The Inaugural Estuary Roundtrip</h1>
     <div class="hero-buttons">
-      <a href="https://buymeacoffee.com/estuaryroadtrip" target="_blank" class="hero-link-button">Buy Us A Coffee</a>
-      <a href="mailto:esturaryroadtrip@gmail.com?subject=Planning a Visit&body=Hi! I live in _______, and I'd love to plan a visit. I was wondering when you'll be in my area?" target="_blank" class="hero-link-button">Plan a Visit</a>
+      <div class="top-button">
+        <a href="mailto:esturaryroadtrip@gmail.com?subject=Planning a Visit&body=Hi! I live in _______, and I'd love to plan a visit. I was wondering when you'll be in my area?" target="_blank" class="hero-link-button plan-visit-button">Plan a Visit</a>
+      </div>
+      <div class="bottom-buttons">
+        <a href="https://buymeacoffee.com/estuaryroadtrip" target="_blank" class="hero-link-button">Buy Us A Coffee</a>
+        <a href="https://venmo.com/u/jdumeer" target="_blank" class="hero-link-button"><img src="Venmo_Logo_Blue.png" alt="Venmo Logo" class="icon-img" />        @jdumeer</a>
+      </div>
     </div>
     <img src="map.png" alt="Map Route" class="map-img">
   </header>
@@ -303,17 +407,17 @@
 
   <main>
     <section id="content-vision" class="tab-content">
-      <p>Acquire a van!
+      <p>Buy a van!
         <br>
         Fix it up!
         <br>
-        Visit a bunch of Estuary meetings before Midwestuary in August!
+        Visit a bunch of Estuary meetings before Midwestuary!
         <br>
         Meet lots of internet friends irl!
         <br>
         Buy land or something and move there with them!
         <br>
-        Get to know the neighbors so you can trade stuff with them if need be...
+        Get to know the neighbors so you can trade stuff with them later...
         <br>
         Host Estuary events and epic campfires!
         <br>
@@ -329,33 +433,21 @@
         <br>
         What's a Midwestuary?
         <br>
+        <br>
         Where's the money coming from?
         <br>
         Why not move into a megacorp owned apartment and slave away everyday to make rent like a matrix podman??
         <br>
-        You really think there's gonna be another pandemic / war / solar flare or something?
-        <br>
-        And what the heck does "conjunct" mean?!
+        What the heck does "conjunct" mean?!
         <br>
         <br>
         These are good questions yes thank you for asking 🙂
         <br>
         <br>
-        Firstly, "conjunct" means when 2 or more planets are in the same spot in the sky. Saturn and Neptune (opposites in a sense) are about to be conjunct at the very first degree of the zodiac; and the last time they were together was when the Berlin Wall fell....
-        <br>
-        Estuary is "small group" type organization thingy where people meet in person once a month or so to have meaningful conversations that are hard to have at churches, bars, or family gatherings. With an emphasis on in-person fellowship, good faith conversation, and openness, Estuary serves the essential function of linking people together, sharpening relational skills, and answering hard questions about God and such. It's not really institutional or explicitly "religious", but it's definitely religio. Perhaps check out this digital example of a standard meeting!:
-        <br>
-        <div class="video-gallery">
-          <div class="video-card">
-            <img src="video_thumbnail2.png" alt="Video Title" class="video-thumbnail-img" />
-            <div class="video-date">April 15, 2024</div>
-            <div class="video-title">The NOT Estuary Show (Ep.3)</div>
-            <a href="https://www.youtube.com/watch?v=qoJrTMGlr9U" target="_blank" class="youtube-button">Watch on YouTube</a>
-          </div>
-        </div>
+        Estuary is an epic organization....
         <br>
         <br>
-        Now... Midwestuary 2025 is a larger event basically meant to link up the various estuary groups from around the world (there are about 40 groups total as of writing this; mostly in American and Europe)... There have been a handful of such events before this one; and this one in August is shaping up to be just as epic as the others....  Buy tickets at <a href="https://https://www.midwestuary.com/" target="_blank">midwestuary.com</a> before they sell out last minute!!
+        Midwestuary is... buy tickets before they sell out last minute!
         <br>
         <div class="video-gallery">
           <div class="video-card">
@@ -367,7 +459,10 @@
         </div>
         <br>
         <br>
-        As for the other questions... 
+        Conjunct means when 2 planets are in the same spot from our POV (like in the zodiac).
+        <br>
+        <br>
+        And as for the other ones... 
         <br>
         Stay tuned to find out! 😉
         <br>
@@ -383,23 +478,17 @@
           <div class="video-title">Midwestuary 2025</div>
           <a href="https://www.youtube.com/watch?v=piTFgmbLLDI" target="_blank" class="youtube-button">Watch on YouTube</a>
         </div>
-        <div class="video-card">
-          <div class="video-thumbnail3.png"></div>
-          <div class="video-title">Midwestuary 2025 2</div>
-          <div class="video-date">March 12, 2025</div>
-          <a href="https://www.youtube.com/watch?v=K6_ImAaY5-E" target="_blank" class="youtube-button">Watch on YouTube</a>
+        <!-- <div class="video-card">
+          <div class="video-thumbnail"></div>
+          <div class="video-title">Video Title 2</div>
+          <div class="video-date">April 12, 2025</div>
+          <button class="youtube-button">Watch on YouTube</button>
         </div>
         <div class="video-card">
-          <div class="video-thumbnail4.png"></div>
-          <div class="video-title">Midwestuary 2025 1</div>
-          <div class="video-date">March 12, 2025</div>
-          <a href="https://www.youtube.com/watch?v=UDIXfj25wS8" target="_blank" class="youtube-button">Watch on YouTube</a>
-        </div>
-        <div class="video-card">
-          <div class="video-thumbnail1.png"></div>
-          <div class="video-title">Announcement! Midwestuary Conference 2025 in Chicago</div>
-          <div class="video-date">February 4, 2025</div>
-          <a href="https://www.youtube.com/watch?v=RPRdXv3Hqpg" target="_blank" class="youtube-button">Watch on YouTube</a>
+          <div class="video-thumbnail"></div>
+          <div class="video-title">Video Title 3</div>
+          <div class="video-date">April 12, 2025</div>
+          <button class="youtube-button">Watch on YouTube</button> -->
         </div>
       </div>
     </section>
@@ -429,6 +518,13 @@
             </div> -->
         </div>
         <!-- New Post Ends Here! -->
+      </div>
+      <!-- Lightbox Viewer -->
+      <div id="lightbox" class="lightbox hidden">
+        <span class="close">&times;</span>
+        <img class="lightbox-img" src="" alt="Full View" />
+        <div class="arrow left">&#10094;</div>
+        <div class="arrow right">&#10095;</div>
       </div>
     </section>
 
@@ -463,6 +559,41 @@
     tabButtons.forEach(button => {
       button.addEventListener('click', () => activateTab(button.id));
     });
+
+    const galleryImages = document.querySelectorAll('.photo-img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.querySelector('.lightbox-img');
+    const closeBtn = document.querySelector('.close');
+    const nextBtn = document.querySelector('.arrow.right');
+    const prevBtn = document.querySelector('.arrow.left');
+
+    let currentIndex = 0;
+    const imageArray = Array.from(galleryImages);
+
+    function showImage(index) {
+      currentIndex = index;
+      lightboxImg.src = imageArray[currentIndex].src;
+      lightbox.classList.remove('hidden');
+    }
+
+    imageArray.forEach((img, i) => {
+      img.addEventListener('click', () => showImage(i));
+    });
+
+    nextBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % imageArray.length;
+      lightboxImg.src = imageArray[currentIndex].src;
+    });
+
+    prevBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + imageArray.length) % imageArray.length;
+      lightboxImg.src = imageArray[currentIndex].src;
+    });
+
+    closeBtn.addEventListener('click', () => {
+      lightbox.classList.add('hidden');
+    });
+
   </script>
 </body>
 </html>
